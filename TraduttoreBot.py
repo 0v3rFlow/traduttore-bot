@@ -39,7 +39,8 @@ def traduci_testo(parola_from, chat_id, lingua_dest, lingua_src):
 
 
 def mostra_start(chat_id,name):
-    testo = texti02.replace('&0', str(name.encode('utf-8')))
+#     testo = texti02.replace('&0', str(name.encode('utf-8')))
+    testo = texti02.replace('&0', name)
     bot.sendMessage(chat_id, testo, parse_mode='HTML')
 
 
