@@ -101,5 +101,5 @@ if __name__ == "__main__":
     # Avvio il loop dei messaggi
     MessageLoop(bot, {'chat': on_chat_message, }).run_as_thread()
     print('Listening ...')
-    while 1:
+    while 1: 
           time.sleep(10)
