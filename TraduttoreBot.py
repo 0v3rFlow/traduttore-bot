@@ -6,7 +6,7 @@ from telepot.loop import MessageLoop
 from googletrans import Translator
 import emoji
 
-texte01 = 'Problema con la traduzione. Digitare correttamente'
+texte01 = '🚫 Problema con la traduzione. Digitare correttamente'
 texti02 = "Ciao <strong>&0, </strong>digita qualcosa per iniziare subito a tradurre!😎\n"\
           "La lingua di partenza è in <strong>Italiano 🇮🇹</strong>.\n" \
           "La lingua di destinazione è in <strong>Inglese 🇬🇧</strong>.\n" \
@@ -21,7 +21,7 @@ texti02 = "Ciao <strong>&0, </strong>digita qualcosa per iniziare subito a tradu
           "Buon divertimento✌️"
 
 
-texti03 = "&0 <strong>Comandi:</strong>\n" \
+texti03 = "⚙️ <strong>Comandi:</strong>\n" \
           "\n" \
           "/en - Traduzione in Inglese 🇬🇧\n" \
           "/fr - Traduzione in Francese 🇫🇷 \n" \
