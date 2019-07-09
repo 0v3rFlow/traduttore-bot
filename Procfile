@@ -1,1 +1,1 @@
-web: python TraduttoreBot.py
+web: python traduttorebot.py
