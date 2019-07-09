@@ -39,13 +39,11 @@ def traduci_testo(parola_from, chat_id, lingua_dest, lingua_src):
 
 
 def mostra_start(chat_id,name):
-#     testo = texti02.replace('&0', str(name.encode('utf-8')))
     testo = texti02.replace('&0', name)
     bot.sendMessage(chat_id, testo, parse_mode='HTML')
 
 
 def mostra_info(chat_id):
-    testo = texti03.replace('&0', str(emoji.emojize(':gear:', use_aliases=True).encode('utf-8')))
     bot.sendMessage(chat_id, testo, parse_mode='HTML')
 
 
@@ -93,8 +91,8 @@ def on_chat_message(msg):
 dict_comandi_lingua = {'/en': 'Inglese🇬🇧', '/fr': 'Francese🇫🇷', '/es': 'Spagnolo🇪🇸', '/de': 'Tedesco🇧🇪', '/it': 'Italiano🇮🇹'}
 lingua_src = 'it'
 lingua_dest = 'en'
-# TOKEN = os.environ.get('API_TOKEN', None)
-TOKEN = '834994363:AAEOcDtlg9j1nSd-9vgoec-siUdD10oV2VE'
+
+TOKEN = os.environ.get('API_TOKEN', None)
 
 if __name__ == "__main__":
     # Recuper il TOKEN
