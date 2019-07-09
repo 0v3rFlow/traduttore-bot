@@ -1,9 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-import telepot, sys, time
+import telepot, sys, time, os
 from telepot.loop import MessageLoop
-from tokenconfig import TOKEN
 from googletrans import Translator
 import emoji
 
@@ -101,6 +100,7 @@ def on_chat_message(msg):
 dict_comandi_lingua = {'/en': 'Inglese🇬🇧', '/fr': 'Francese🇫🇷', '/es': 'Spagnolo🇪🇸', '/de': 'Tedesco🇧🇪', '/it': 'Italiano🇮🇹'}
 lingua_src = 'it'
 lingua_dest = 'en'
+TOKEN = os.environ.get('API_TOKEN', None)
 
 if __name__ == "__main__":
     # Recuper il TOKEN
