@@ -44,6 +44,7 @@ def mostra_start(chat_id,name):
 
 
 def mostra_info(chat_id):
+    testo = texti03
     bot.sendMessage(chat_id, testo, parse_mode='HTML')
 
 
