@@ -80,7 +80,7 @@ def on_chat_message(msg):
         db = dbhelper.DBHelper()
         db.create_table()
         name = msg['from']['first_name']
-        print(content_type, chat_type, chat_id, name)
+        print(content_type, chat_type, chat_id, name, input_text)
 
         items = db.get_items(chat_id)
         if not items:
