@@ -12,6 +12,8 @@ from googletrans import Translator
 
 
 texte01 = '🚫 Problema con la traduzione. Digitare correttamente'
+texte02 = "⚠️⚠️ Non hai inserito un testo. Riprova e passami il link. 😊"
+
 texti02 = "Ciao <strong>&0, </strong>digita qualcosa per iniziare subito a tradurre!😎\n"\
           "Lingua di partenza <strong>Italiano 🇮🇹</strong>.\n" \
           "Lingua di destinazione <strong>Inglese 🇬🇧</strong>.\n"\
