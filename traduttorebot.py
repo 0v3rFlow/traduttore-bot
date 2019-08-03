@@ -68,45 +68,51 @@ def switch_lingua(chat_id, lingua_dest, lingua_src):
     return lingua_src, lingua_dest
 
 def on_chat_message(msg):
-    db = dbhelper.DBHelper()
-    db.create_table()
-
     content_type, chat_type, chat_id = telepot.glance(msg)
-    input_text = msg['text']
-    name = msg['from']['first_name']
-    print(content_type, chat_type, chat_id, name)
+    input_text = ''
+    # Prelevo il messaggio inserito dall'utente e controllo che sia un testo
+    try:
+        input_text = msg['text']
+    except:
+        bot.sendMessage(chat_id, texte02)
 
-    items = db.get_items(chat_id)
-    if not items:
-        lingua_src = 'it'
-        lingua_dest = 'en'
-        db.add_item(chat_id, lingua_src, lingua_dest)
-    else:
-        lingua_src = items[0][1]
-        lingua_dest = items[0][2]
+    if input_text:
+        db = dbhelper.DBHelper()
+        db.create_table()
+        name = msg['from']['first_name']
+        print(content_type, chat_type, chat_id, name)
 
-    if input_text == '/start' or input_text =='/start@iltradutorebot':
-        mostra_start(chat_id, name)
-    elif input_text == '/help' or input_text == '/help@iltraduttorebot':
-        mostra_info(chat_id)
-    elif input_text == '/switch' or input_text == '/switch@iltraduttorebot':
-        lingua_src, lingua_dest = switch_lingua(chat_id, lingua_dest, lingua_src)
-        db.update_items(chat_id, lingua_src, lingua_dest)
-    else:
-        try:
-            if input_text in dict_comandi_lingua:
-                bot.sendMessage(chat_id, 'Ho settato la lingua in: %s' % (dict_comandi_lingua.get(input_text)))
-                input_text = input_text.replace('/','')
-                lingua_dest = input_text[:2]
-                lingua_src = 'it'
-                db.update_items(chat_id, lingua_src, lingua_dest)
-            else:
-                # Chiamo la funzione che esegue la traduzione
-                parolatrad = traduci_testo(input_text, chat_id, lingua_dest, lingua_src)
-                # Invio la traduzione all'utente
-                bot.sendMessage(chat_id, parolatrad)
-        except:
-            bot.sendMessage(chat_id, texte01)
+        items = db.get_items(chat_id)
+        if not items:
+            lingua_src = 'it'
+            lingua_dest = 'en'
+            db.add_item(chat_id, lingua_src, lingua_dest)
+        else:
+            lingua_src = items[0][1]
+            lingua_dest = items[0][2]
+
+        if input_text == '/start' or input_text =='/start@iltradutorebot':
+            mostra_start(chat_id, name)
+        elif input_text == '/help' or input_text == '/help@iltraduttorebot':
+            mostra_info(chat_id)
+        elif input_text == '/switch' or input_text == '/switch@iltraduttorebot':
+            lingua_src, lingua_dest = switch_lingua(chat_id, lingua_dest, lingua_src)
+            db.update_items(chat_id, lingua_src, lingua_dest)
+        else:
+            try:
+                if input_text in dict_comandi_lingua:
+                    bot.sendMessage(chat_id, 'Ho settato la lingua in: %s' % (dict_comandi_lingua.get(input_text)))
+                    input_text = input_text.replace('/','')
+                    lingua_dest = input_text[:2]
+                    lingua_src = 'it'
+                    db.update_items(chat_id, lingua_src, lingua_dest)
+                else:
+                    # Chiamo la funzione che esegue la traduzione
+                    parolatrad = traduci_testo(input_text, chat_id, lingua_dest, lingua_src)
+                    # Invio la traduzione all'utente
+                    bot.sendMessage(chat_id, parolatrad)
+            except:
+                bot.sendMessage(chat_id, texte01)
 
 dict_comandi_lingua = {'/en': 'Inglese🇬🇧', '/en@iltraduttorebot': 'Inglese🇬🇧',
                        '/fr': 'Francese🇫🇷', '/fr@iltraduttorebot': 'Francese🇫🇷',
